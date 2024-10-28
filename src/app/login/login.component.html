@@ -1,0 +1,33 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
+  <p class="h4 mb-4">Sign In</p>
+  <div class="form-row mb-4" style="justify-items: center;">
+      <div class="col-4">
+          <input type="text" formControlName="Email"  id="defaultRegisterFormFirstName" class="form-control" placeholder="Email" required="required">
+          <span class="text-danger"*ngIf="userForm.controls.Email.invalid
+          && userForm.controls.Email.errors.required && (userForm.controls.Email.touched || userForm.controls.Email.dirty)
+          ">
+                    Email is required
+            </span>
+        </div><br>
+      <div class="col-4">
+          <input type="password" formControlName="Password" class="form-control" placeholder="Password" required="required">
+          <span class="text-danger"*ngIf="userForm.controls.Password.invalid
+          && userForm.controls.Password.errors.required && (userForm.controls.Password.touched || userForm.controls.Password.dirty)
+          ">
+                    Password is required
+            </span>
+        </div>
+  </div>
+  <span class="text-danger" *ngIf="!success">Invalid Credentials</span>
+  <div class="row">
+    <div class="col-3">
+      </div>
+    <div class="col-3" style="padding-left: 18%">
+      <button class="btn btn-info my-4 btn-block" type="submit" [disabled]="!userForm.valid">Sign in</button>
+      </div>
+      <div class="col-1" style="padding: 0px 5px; ">
+        <a  class="btn btn-info my-4 btn-block" routerLink='signup'>Register</a>
+      </div>
+  </div>
+
+</form>
